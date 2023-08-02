@@ -9,6 +9,7 @@ const People = () => {
       {people.map((person) => (
         <Person key={person.url} person={person} />
       ))}
+      {people.length === 0 && <p>Loading...</p>}
     </>
   );
 };
