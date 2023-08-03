@@ -19,9 +19,8 @@ const Person = ({ person }: PersonProps) => {
     return "currently " + state;
   }
 
-   
   return (
-    <div className="card" key={person.url}>
+    <div className="card" key={person.url} style={{ margin: 0, padding: 0 }}>
       <p>
         {person.name} is {showStatus(getOnlineState())}.
       </p>

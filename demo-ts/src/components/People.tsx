@@ -2,6 +2,7 @@ import { useState } from "react";
 import { LoadStateType, usePeople } from "../hooks/usePeople";
 import Person from "./Person";
 import Spinner from "./Spinner";
+import ApexChart from "./ApexChart";
 
 const People = () => {
   const [isLoading, setIsLoading] = useState<LoadStateType>(false);
@@ -10,12 +11,22 @@ const People = () => {
     setIsLoading(state);
   };
   const people = usePeople(changeIsLoading);
+
+  const mySeries = [50, 40, 60];
+
   return (
     <>
-      {people.map((person) => (
-        <Person key={person.url} person={person} />
-      ))}
-      {isLoading && <Spinner />}
+      <div style={{ display: "flex" }}>
+        <div>
+          {people.map((person) => (
+            <Person key={person.url} person={person} />
+          ))}
+          {isLoading && <Spinner />}
+        </div>
+        <div style={{ alignSelf: "center" }}>
+          <ApexChart series={mySeries} />
+        </div>
+      </div>
     </>
   );
 };
